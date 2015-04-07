@@ -1,9 +1,10 @@
 from __future__ import unicode_literals
 from django.contrib import admin
 from authtools.admin import NamedUserAdmin
-from .models import Profile
+from .models import Profile, BaseProfile
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
+from admissions.models import Student
 
 User = get_user_model()
 
@@ -13,13 +14,15 @@ class UserProfileInline(admin.StackedInline):
 
 
 class NewUserAdmin(NamedUserAdmin):
+
     inlines = [UserProfileInline]
     list_display = ('is_active', 'email', 'name', 'permalink',
-                    'is_superuser', 'is_staff',)
+                    'is_superuser', 'is_staff' )
 
     # 'View on site' didn't work since the original User model needs to
     # have get_absolute_url defined. So showing on the list display
     # was a workaround.
+
     def permalink(self, obj):
         url = reverse("profiles:show",
                       kwargs={"slug": obj.profile.slug})
@@ -27,5 +30,9 @@ class NewUserAdmin(NamedUserAdmin):
         return '<a href="{}">{}</a>'.format(url, '\xb6')
     permalink.allow_tags = True
 
+class ProfileAdmin(admin.ModelAdmin):
+  list_display = ('rno', 'rank', 'is_eligible')
+
 admin.site.unregister(User)
-admin.site.register(User, NewUserAdmin)
+admin.site.register(User,NewUserAdmin)
+admin.site.register(Profile, ProfileAdmin)

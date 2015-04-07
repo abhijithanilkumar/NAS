@@ -47,6 +47,7 @@ INSTALLED_APPS = (
 
     'profiles',
     'accounts',
+    'admissions',
 
     'django.contrib.admin',
     'django.contrib.auth',

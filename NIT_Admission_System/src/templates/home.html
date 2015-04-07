@@ -12,7 +12,7 @@
 {% block navbar-right %}
   {% if not user.is_authenticated %}
 <a class="btn btn-default" href="{% url 'accounts:login' %}" role="button">Log in</a>
-<a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up</a>
+<a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Apply</a>
   {% else %}
     {{ block.super }}
   {% endif %}
@@ -24,8 +24,8 @@
       <div class="row">
         <div class="col-md-8 col-sm-8">
           <h1>{% include "_brandname.html" %}</h1>
-          <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p>
-	  <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Sign up for Free!</a>
+          <p>The Admissions are now Automated!</p>
+	  <a class="btn btn-primary" href="{% url 'accounts:signup' %}" role="button">Apply Now</a>
         </div>
         <div class="col-md-4 col-sm-4">
 
@@ -38,7 +38,7 @@
 {% block container %}
 <!-- Benefits of the Django application -->
 <a name="about"></a>
-
+<!--
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
@@ -57,9 +57,9 @@
       <p><a class="btn btn-primary" href="#" role="button">View details &raquo;</a></p>
     </div>
   </div>
-</div>
-
-{% endblock container %}
+</div> 
+-->
+{% endblock container %} 
 
 {% block scripts %}
 <script src="{% static 'site/js/site.js' %}"></script>

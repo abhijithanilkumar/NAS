@@ -46,8 +46,12 @@
 	    <span class="sr-only">Permalink</span></a> {{ show_user.profile.get_absolute_url }}
 	</div>
         <div class="panel-body">
-	  <strong>Bio</strong>: {{ show_user.profile.bio }}
-	</div>
+	  <strong>Jee(Main) Roll No.</strong>: {{ show_user.profile.rno }}
+          <br><strong>Jee(Main) Rank</strong>: {{ show_user.profile.rank }}
+          <br><strong>Branch Chosen</strong>: {{ show_user.profile.branch }}
+          <br><strong>Eligibility</strong>: {{ show_user.profile.is_eligible }}
+          <br><strong>Fees</strong>: {{show_user.profile.fees }}
+       	</div>
       </div>
     </div>
 </div>

@@ -2,16 +2,16 @@
 
 {% load crispy_forms_tags %}
 
-{% block title %}{{ block.super }}Sign Up{% endblock %}
+{% block title %}{{ block.super }}Apply{% endblock %}
 
-{% block form_heading %}Signing Up is Free{% endblock %}
+{% block form_heading %}Application is Free{% endblock %}
 
 {% block form %}
   {% crispy form %}
 
   <div class="form-message">
     <p>
-      Already signed up? <a href="{% url 'accounts:login' %}">Log in</a>.
+      Already Applied? <a href="{% url 'accounts:login' %}">Log in</a>.
     </p>
   </div>
 {% endblock form %}
