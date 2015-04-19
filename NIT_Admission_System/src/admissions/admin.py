@@ -6,7 +6,7 @@ class StudentAdmin(admin.ModelAdmin):
   list_display = ['rno', 'rank']
  
 class SemFeeAdmin(admin.ModelAdmin):
-  list_display = ['year', 'dasa', 'daysch', 'hostel']
+  list_display = ['cat', 'tutfee', 'admfee']
 
 admin.site.register(Student, StudentAdmin)
 admin.site.register(SemFee, SemFeeAdmin)

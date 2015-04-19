@@ -49,9 +49,26 @@
 	  <strong>Jee(Main) Roll No.</strong>: {{ show_user.profile.rno }}
           <br><strong>Jee(Main) Rank</strong>: {{ show_user.profile.rank }}
           <br><strong>Branch Chosen</strong>: {{ show_user.profile.branch }}
+          <br><strong>Category</strong>: {{ show_user.profile.category }}
+          <br><strong>Student Category</strong>: {{ show_user.profile.category2 }}
           <br><strong>Eligibility</strong>: {{ show_user.profile.is_eligible }}
-          <br><strong>Fees</strong>: {{show_user.profile.fees }}
        	</div>
+        <div class="panel-body">
+          <strong>Tution Fee</strong>: {{ show_user.profile.tutfee }}
+          <br><strong>Library Fee</strong>: {{ show_user.profile.libfee }}
+          <br><strong>Central Computing Facility Fee</strong>: {{ show_user.profile.cccfee }}
+          <br><strong>Student Activities Fee</strong>: {{ show_user.profile.sacfee }}
+          <br><strong>Group Insurance COverage of Students</strong>: {{ show_user.profile.insufee }}   
+          <br><strong>Security Deposit (Refundable)</strong>: {{ show_user.profile.secfee }}
+          <br><strong>Institute Development Contribution</strong>: {{ show_user.profile.devfee }}
+          <br><strong>Convocation Fee</strong>: {{ show_user.profile.convofee }}
+          <br><strong>Swimming Pool Fee</strong>: {{ show_user.profile.poolfee }}
+          <br><strong>Campus Development Fee</strong>: {{ show_user.profile.camdevfee }}
+          <br><strong>Alumni Association</strong>: {{ show_user.profile.alumfee }}
+          <br><strong>Hostel Admission Fee</strong>: {{ show_user.profile.admfee }}
+          <br><strong>Hostel Rent</strong>: {{ show_user.profile.rent }}
+          <br><strong>Total Amount Payable</strong>: {{ show_user.profile.totfee }}
+            </div>
       </div>
     </div>
 </div>

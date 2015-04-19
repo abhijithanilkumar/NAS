@@ -36,9 +36,10 @@ class ProfileForm(forms.ModelForm):
             Field('rank'),
             Field('branch'),
             Field('category'),
+            Field('category2'),
             Submit('update', 'Update', css_class="btn-success"),
             )
 
     class Meta:
         model = models.Profile
-        fields = ['picture', 'rno', 'rank', 'branch', 'category']
+        fields = ['picture', 'rno', 'rank', 'branch', 'category', 'category2']

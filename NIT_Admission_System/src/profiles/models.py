@@ -7,13 +7,25 @@ from admissions.models import Student, SemFee
 from datetime import datetime
 
 def calc_fee(obj):
-    refobj = SemFee.objects.get(year = datetime.now().year)
-    if obj.category == "DA":
-        obj.fees = refobj.dasa
-    if obj.category == "GH":
-        obj.fees = refobj.hostel
-    if obj.category == "GD":
-        obj.fees = refobj.daysch
+    refobj = SemFee.objects.get(cat = obj.category2)
+    obj.tutfee = refobj.tutfee
+    obj.libfee = refobj.libfee
+    obj.cccfee = refobj.cccfee
+    obj.sacfee = refobj.sacfee
+    obj.insufee = refobj.insufee
+    obj.secfee = refobj.secfee
+    obj.devfee = refobj.devfee
+    obj.convofee = refobj.convofee
+    obj.poolfee = refobj.poolfee
+    obj.camdevfee = refobj.camdevfee
+    obj.alumfee = refobj.alumfee
+    if obj.category2 == "GD":
+        obj.admfee = 0
+        obj.rent = 0
+    else:
+        obj.admfee = refobj.admfee
+        obj.rent = refobj.rent
+    obj.totfee = refobj.tutfee + refobj.libfee + refobj.cccfee + refobj.sacfee + refobj.insufee + refobj.secfee + refobj.devfee + refobj.convofee + refobj.poolfee + refobj.camdevfee + refobj.alumfee + refobj.admfee + refobj.rent
     return obj
 
 class BaseProfile(models.Model):
@@ -38,17 +50,34 @@ class BaseProfile(models.Model):
                    ('MN', 'Mining Engineering'),
                    ('MT', 'Materials and Metallurgical Engineering'),
                    )
-    rno = models.IntegerField("JEE(Main) Roll No.", default=0)
-    rank = models.IntegerField("JEE(Main) Rank", default=0)
-    branch = models.CharField("Branch Chosen", max_length=200, choices=BRANCH_LIST, default='NC')
-    CATEGORY_LIST = (('GD', 'Day Scholar'),
+    rno = models.IntegerField("JEE(Main) Roll No.", null=True,  blank=True)
+    rank = models.IntegerField("JEE(Main) Rank", null=True, blank=True)
+    branch = models.CharField("Branch Chosen", max_length=50, choices=BRANCH_LIST, null=True, blank=True)
+    CATEGORY_LIST = (('GN', 'Gen/OBC'),
+                     ('SC', 'SC/ST'),
+                    )
+    CATEGORY_LIST_2 = (('GD', 'Day Scholar'),
                      ('GH', 'Hosteller'),
                      ('DA', 'DASA/SAARC'),
                     )
-    category = models.CharField("Student Category", max_length=30, choices=CATEGORY_LIST, default='GH')
-    fees = models.IntegerField("Fees To Be Payed", default=0)
+    category = models.CharField("Category", max_length=30, choices=CATEGORY_LIST, default='GN')
+    category2 = models.CharField("Student Category", max_length=30, choices=CATEGORY_LIST_2, default='GH')
     
-    
+    tutfee = models.IntegerField("Tution Fees", null=True, blank=True)     
+    libfee = models.IntegerField("Library Fees",null=True, blank=True)                                                          
+    cccfee = models.IntegerField("Central Computing Facility Fees",null=True, blank=True)                                       
+    sacfee = models.IntegerField("Student Activities Fee",null=True, blank=True)                                                
+    insufee = models.IntegerField("Group Insturance Coverage of Students",null=True, blank=True)                               
+    secfee = models.IntegerField("Security Deposit (Refundable)",null=True, blank=True)                                         
+    devfee = models.IntegerField("Institute Development Contribution",null=True, blank=True)                                    
+    convofee = models.IntegerField("Convocation Fee",null=True, blank=True)
+    poolfee = models.IntegerField("Swimming Pool Fee",null=True, blank=True)                                                    
+    camdevfee = models.IntegerField("Campus Development Fee",null=True, blank=True)
+    alumfee = models.IntegerField("Alumni Association",null=True, blank=True)                                                   
+    admfee = models.IntegerField("Hostel Admission Fee",null=True, blank=True)                                                  
+    rent = models.IntegerField("Hostel Rent",null=True, blank=True)
+    totfee = models.IntegerField("Total Amount to be Payed",null=True, blank=True)
+
     def is_eligible(self):
         for e in Student.objects.all():
             if e.rno == self.rno and e.rank ==self.rank:
@@ -58,15 +87,6 @@ class BaseProfile(models.Model):
     is_eligible.boolean = True
     is_eligible.short_description = "Eligible?"
 
-    '''def calc_fee(obj):
-        refobj = SemFee.objects.get(year = datetime.now().year)
-        if obj.category == "DA":
-            obj.fees = refobj.dasa
-        if obj.category == "GH":
-            obj.fees = refobj.hostel
-        if obj.category == "GD":
-            obj.fees = refobj.daysch
-        return obj'''
             
     
     email_verified = models.BooleanField("Email Verified", default=False)
