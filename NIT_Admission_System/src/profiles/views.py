@@ -58,3 +58,6 @@ class EditProfile(LoginRequiredMixin, generic.TemplateView):
         profile.save()
         messages.success(request, "Profile details saved!")
         return redirect("profiles:show_self")
+
+class GetImage(generic.TemplateView):
+    template_name = "profiles/show_img.html"

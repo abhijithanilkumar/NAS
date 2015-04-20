@@ -39,6 +39,7 @@ class BaseProfile(models.Model):
                                 upload_to='profile_pics/%Y-%m-%d/',
                                 null=True,
                                 blank=True)
+    challan = models.ImageField('Challan', upload_to='profile_pics/%Y-%m-%d/',null=True,blank=True)
     BRANCH_LIST = (('NC', 'Not Chosen'),
                    ('CH', 'Chemical Engineering'),
                    ('CO', 'Computer Engineering'),

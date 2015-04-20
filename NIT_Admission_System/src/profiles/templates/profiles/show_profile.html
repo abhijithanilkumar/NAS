@@ -58,7 +58,7 @@
           <br><strong>Library Fee</strong>: {{ show_user.profile.libfee }}
           <br><strong>Central Computing Facility Fee</strong>: {{ show_user.profile.cccfee }}
           <br><strong>Student Activities Fee</strong>: {{ show_user.profile.sacfee }}
-          <br><strong>Group Insurance COverage of Students</strong>: {{ show_user.profile.insufee }}   
+          <br><strong>Group Insurance Coverage of Students</strong>: {{ show_user.profile.insufee }}   
           <br><strong>Security Deposit (Refundable)</strong>: {{ show_user.profile.secfee }}
           <br><strong>Institute Development Contribution</strong>: {{ show_user.profile.devfee }}
           <br><strong>Convocation Fee</strong>: {{ show_user.profile.convofee }}
@@ -68,7 +68,8 @@
           <br><strong>Hostel Admission Fee</strong>: {{ show_user.profile.admfee }}
           <br><strong>Hostel Rent</strong>: {{ show_user.profile.rent }}
           <br><strong>Total Amount Payable</strong>: {{ show_user.profile.totfee }}
-            </div>
+        </div>
+        <a href={% url 'profiles:get_challan' %} class="btn btn-info">Get Challan</a>
       </div>
     </div>
 </div>

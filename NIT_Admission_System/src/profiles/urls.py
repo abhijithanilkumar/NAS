@@ -7,4 +7,5 @@ urlpatterns = patterns(
     url(r'^me/edit$', views.EditProfile.as_view(), name='edit_self'),
     url(r'^(?P<slug>\w+)$', views.ShowProfile.as_view(),
         name='show'),
+   url(r'^me/challan$', views.GetImage.as_view(), name='get_challan'),
 )
