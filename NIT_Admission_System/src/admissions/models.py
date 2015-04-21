@@ -25,3 +25,4 @@ class SemFee(models.Model):
     alumfee = models.IntegerField("Alumni Association", null=True, blank=True)
     admfee = models.IntegerField("Hostel Admission Fee", null=True, blank=True)
     rent = models.IntegerField("Hostel Rent", null=True, blank=True)
+    dasa = models.IntegerField("Dasa Fee",null=True, blank=True)

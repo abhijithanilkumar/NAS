@@ -7,7 +7,7 @@ from admissions.models import Student, SemFee
 from datetime import datetime
 
 def calc_fee(obj):
-    refobj = SemFee.objects.get(cat = obj.category2)
+    refobj = SemFee.objects.get(cat = obj.category)
     obj.tutfee = refobj.tutfee
     obj.libfee = refobj.libfee
     obj.cccfee = refobj.cccfee
@@ -25,7 +25,11 @@ def calc_fee(obj):
     else:
         obj.admfee = refobj.admfee
         obj.rent = refobj.rent
-    obj.totfee = refobj.tutfee + refobj.libfee + refobj.cccfee + refobj.sacfee + refobj.insufee + refobj.secfee + refobj.devfee + refobj.convofee + refobj.poolfee + refobj.camdevfee + refobj.alumfee + refobj.admfee + refobj.rent
+    if obj.category2 == "DA":
+        obj.dasa = refobj.dasa
+    else:
+        obj.dasa = 0
+    obj.totfee = obj.tutfee + obj.libfee + obj.cccfee + obj.sacfee + obj.insufee + obj.secfee + obj.devfee + obj.convofee + obj.poolfee + obj.camdevfee + obj.alumfee + obj.admfee + obj.rent + obj.dasa
     return obj
 
 class BaseProfile(models.Model):
@@ -78,6 +82,7 @@ class BaseProfile(models.Model):
     admfee = models.IntegerField("Hostel Admission Fee",null=True, blank=True)                                                  
     rent = models.IntegerField("Hostel Rent",null=True, blank=True)
     totfee = models.IntegerField("Total Amount to be Payed",null=True, blank=True)
+    dasa = models.IntegerField("Dasa Fee",null=True, blank=True)
 
     def is_eligible(self):
         for e in Student.objects.all():

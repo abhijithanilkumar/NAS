@@ -67,6 +67,7 @@
           <br><strong>Alumni Association</strong>: {{ show_user.profile.alumfee }}
           <br><strong>Hostel Admission Fee</strong>: {{ show_user.profile.admfee }}
           <br><strong>Hostel Rent</strong>: {{ show_user.profile.rent }}
+          <br><strong>DASA Fee</strong>: {{ show_user.profile.dasa }}
           <br><strong>Total Amount Payable</strong>: {{ show_user.profile.totfee }}
         </div>
         <a href={% url 'profiles:get_challan' %} class="btn btn-info">Get Challan</a>
