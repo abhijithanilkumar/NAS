@@ -1,14 +1,13 @@
 
-
 # NIT_Admission_System
 
-NIT_Admission_System is a (short description) built with [Python][0] using the [Django Web Framework][1].
+NIT_Admission_System is an online admission system for NITs built with [Python][0] using the [Django Web Framework][1]. The initial version aims to automate the admission procedures at NITK Surathkal.
 
 This project has the following basic apps:
 
-* App1 (short desc)
-* App2 (short desc)
-* App3 (short desc)
+* profiles (manages the profiles of the users)
+* accounts (manages accounts (signup, login, etc))
+* admissions (manages the admission procedure)
 
 ## Installation
 
